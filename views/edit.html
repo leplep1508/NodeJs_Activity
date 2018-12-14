@@ -1,0 +1,18 @@
+<h1>Update product</h1>
+
+<form method="POST" action="/product/{{product._id}}/update">
+    <label>Name: </label>
+    <input name="name" value="{{product.name}}"><br/>
+    <label>Price: </label>
+    <input name="price" value="{{product.price}}"/><br/>
+    <label>HeaderImage: </label>
+    <input name="headerImage" value="{{product.headerImage}}"/><br/>
+    <label>Qty: </label>
+    <input name="qty" value="{{product.qty}}"/><br/>
+    <textarea rows="5" cols="100" name="content">{{product.content}}</textarea><br/>
+    <input type="submit"/>
+</form>
+
+<form method="POST" action="/product/{{product._id}}/delete">
+    <input type="submit" value="Delete"/>
+</form>
