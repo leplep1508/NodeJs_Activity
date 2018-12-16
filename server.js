@@ -72,7 +72,16 @@ app.get("/form", (req, res) => {
     res.render('form.html');
 })
 
+// add to cart
+app.get ("/product/:id/addtocart", (req,res) => {
+    const id = req.params.id 
 
+    mongoDb.collection('products').findOne({ _id: new ObjectID(id)}, (err, data) => {
+        res.render("productDetails.html", { 
+            product: data
+        })
+    }); 
+})
 
 // this gets called when the form is submitted via POST
 app.post("/product/create", (req, res) => {
@@ -111,6 +120,15 @@ app.get("/product/:id/edit", (req, res) => {
 
     
 });
+
+//Product details
+app.get ("/product/:id/details", (req,res) =>{
+    const id = req.params.id;
+
+    mongoDb.collection('products').findOne({ _id: new ObjectID(id)}, (err, data) => {
+        res.render("productDetails.html", { product: data })
+    });    
+})
 
 // this gets called when we submit the form from the edit page
 app.post("/product/:id/update", (req, res) => {
